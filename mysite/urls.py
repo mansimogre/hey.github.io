@@ -20,8 +20,18 @@ admin.site.site_header = "Mansi Icecreram Admn"
 admin.site.site_title = "MANSI Admin Portal"
 admin.site.index_title = "Welcome to mansi icecream  Portal"
 
+
+# herokuu
+from django.views.static import serve
+from django.conf.urls import url
+from django.conf.urls import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("",include ("myapp.urls")),
+
+
+    #  herokuuu
+    url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
+    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
    
 ]
